@@ -79,12 +79,12 @@ const Layout: React.FC<LayoutProps> = ({
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-auto">
-        <header className="bg-white border-b h-16 flex items-center justify-between px-8 sticky top-0 z-10">
-          <h2 className="text-lg font-semibold text-gray-800 capitalize">
+        <header className="bg-white border-b h-24 shrink-0 flex items-center justify-between px-8 sticky top-0 z-10">
+          <h2 className="text-xl font-semibold text-gray-800 capitalize">
             {activeView}
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+          <div className="flex items-center space-x-5">
+            <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
               AD
             </div>
             <span className="text-sm font-medium text-gray-600">
