@@ -1,5 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 import DashboardStats from "./components/DashboardStats";
@@ -97,8 +102,8 @@ const App: React.FC = () => {
   }, [fetchStockData]);
 
   useEffect(() => {
-    const token = localStorage.getItem("inv_admin_auth");
-    setAuthed(token === "1");
+    const authFlag = localStorage.getItem("inv_admin_auth");
+    setAuthed(authFlag === "1");
   }, []);
 
   const handleUpdateSettings = async (newSettings: SystemSettings) => {
@@ -187,12 +192,12 @@ const App: React.FC = () => {
   };
 
   const openLogin = () => {
-    window.history.pushState({}, '', '/admin/login');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.history.pushState({}, "", "/admin/login");
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
   const closeLogin = () => {
-    window.history.pushState({}, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.history.pushState({}, "", "/");
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
 
   const renderContent = () => {
@@ -391,6 +396,7 @@ const App: React.FC = () => {
       onCheckLowStock={handleCheckLowStock}
       onLogout={() => {
         localStorage.removeItem("inv_admin_auth");
+        localStorage.removeItem("inv_admin_token");
         setAuthed(false);
       }}
       onLogin={openLogin}
@@ -416,16 +422,24 @@ const App: React.FC = () => {
         loading={isAnalyzing}
         settings={settings || undefined}
       />
-      {showLogin && (
-        <div />
-      )}
+      {showLogin && <div />}
     </Layout>
   );
-  
+
   return (
     <Router>
       <Routes>
-        <Route path="/admin/login" element={<Login onSuccess={() => { setAuthed(true); closeLogin(); }} />} />
+        <Route
+          path="/admin/login"
+          element={
+            <Login
+              onSuccess={() => {
+                setAuthed(true);
+                closeLogin();
+              }}
+            />
+          }
+        />
         <Route path="/*" element={<AppShell />} />
       </Routes>
     </Router>

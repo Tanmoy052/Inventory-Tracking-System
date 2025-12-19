@@ -42,10 +42,10 @@ const Layout: React.FC<LayoutProps> = ({
       <aside className="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div className="p-6">
           <h1 className="text-xl font-bold tracking-tight text-blue-400">
-            InventoryPro
+            Enterprise Aerial View-6
           </h1>
           <p className="text-xs text-slate-400 uppercase tracking-widest mt-1">
-            Enterprise Solution
+            Inventory
           </p>
         </div>
 
@@ -85,7 +85,7 @@ const Layout: React.FC<LayoutProps> = ({
           </h2>
           <div className="flex items-center space-x-5">
             <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
-              AD
+              {authed ? "AD" : "G"}
             </div>
             <span className="text-sm font-medium text-gray-600">
               {authed ? "Admin User" : "Guest"}
