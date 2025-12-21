@@ -120,3 +120,5 @@ const Layout: React.FC<LayoutProps> = ({
 };
 
 export default Layout;
+
+//This Layout component implements a reusable application shell using React and TypeScript. It follows a stateless, props-driven design where navigation, authentication state, and global actions are controlled by parent components. The layout uses composition through children, data-driven navigation configuration, responsive design principles, and conditional rendering to create a scalable and maintainable dashboard structure.

@@ -1,21 +1,21 @@
 
-import React from 'react';
+import React from 'react';   // react FC 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { Location, Item, StockWithDetails } from '../types';
-import { MapPin, Package, AlertTriangle, TrendingUp } from 'lucide-react';
+import { Location, Item, StockWithDetails } from '../types';  // type safety
+import { MapPin, Package, AlertTriangle, TrendingUp } from 'lucide-react'; // lucide-react:Modern SVG icons
 
 interface Props {
   locations: Location[];
-  items: Item[];
-  stock: StockWithDetails[];
+  items: Item[]; 
+  stock: StockWithDetails[]; 
 }
 
-const DashboardStats: React.FC<Props> = ({ locations, items, stock }) => {
-  const lowStockCount = stock.filter(s => s.isLowStock).length;
+const DashboardStats: React.FC<Props> = ({ locations, items, stock }) => { // react FC:props typing
+  const lowStockCount = stock.filter(s => s.isLowStock).length; // Low stock items count
   const totalQuantity = stock.reduce((acc, curr) => acc + curr.currentQuantity, 0);
 
   const stats = [
-    { label: 'Total Locations', value: locations.length, icon: MapPin, color: 'text-blue-600', bg: 'bg-blue-50' },
+    { label: 'Total Locations', value: locations.length, icon: MapPin, color: 'text-blue-600', bg: 'bg-blue-50' }, //data driven uI
     { label: 'Total Items', value: items.length, icon: Package, color: 'text-purple-600', bg: 'bg-purple-50' },
     { label: 'Low Stock Alerts', value: lowStockCount, icon: AlertTriangle, color: 'text-red-600', bg: 'bg-red-50' },
     { label: 'Total Inventory', value: totalQuantity, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
@@ -25,12 +25,12 @@ const DashboardStats: React.FC<Props> = ({ locations, items, stock }) => {
   const itemAggregation = stock.reduce((acc: any, curr) => {
     acc[curr.itemName] = (acc[curr.itemName] || 0) + curr.currentQuantity;
     return acc;
-  }, {});
+  }, {}); //adding same items quantity
 
   const chartData = Object.entries(itemAggregation)
     .map(([name, value]) => ({ name, value: value as number }))
     .sort((a, b) => b.value - a.value)
-    .slice(0, 8);
+    .slice(0, 8); //chart data top 8 items
 
   return (
     <div className="space-y-8">
@@ -38,8 +38,8 @@ const DashboardStats: React.FC<Props> = ({ locations, items, stock }) => {
         {stats.map((stat) => (
           <div key={stat.label} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center space-x-4">
             <div className={`${stat.bg} p-3 rounded-lg`}>
-              <stat.icon className={stat.color} size={24} />
-            </div>
+              <stat.icon className={stat.color} size={24} /> 
+            </div> 
             <div>
               <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
               <p className="text-2xl font-bold text-gray-900">{stat.value}</p>

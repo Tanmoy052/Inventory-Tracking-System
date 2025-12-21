@@ -3,20 +3,20 @@ export interface Location {
   id: string;
   name: string;
   description: string;
-  createdAt: number;
+  createdAt: number;  //timestamp 
 }
 
 export interface Item {
   id: string;
   name: string;
-  itemCode: string;
+  itemCode: string; //unique code
   description: string;
-  minQuantity: number;
-  createdAt: number;
+  minQuantity: number; //minimum required stock
+  createdAt: number; 
 }
 
 export interface Stock {
-  locationId: string;
+  locationId: string;   
   itemId: string;
   currentQuantity: number;
 }

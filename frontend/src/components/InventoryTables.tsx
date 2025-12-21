@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Plus, Minus, ChevronLeft, ChevronRight, Trash2 } from 'lucide-react';
+import React from 'react';  // react FC
+import { Plus, Minus, ChevronLeft, ChevronRight, Trash2 } from 'lucide-react';  //lucide-react:Modern SVG icons
 import { Location, Item, StockWithDetails } from '../types';
 
 export const LocationTable: React.FC<{ locations: Location[], onDelete: (id: string) => void, canEdit?: boolean }> = ({ locations, onDelete, canEdit = true }) => (
@@ -93,7 +93,7 @@ interface StockTableProps {
   pageSize: number;
   onPageChange: (newPage: number) => void;
   onUpdate: (locId: string, itemId: string, delta: number) => void;
-  canEdit?: boolean;
+  canEdit?: boolean; //Pagination logic controlled by parent
 }
 
 export const StockTable: React.FC<StockTableProps> = ({ stock, total, page, pageSize, onPageChange, onUpdate, canEdit = true }) => {

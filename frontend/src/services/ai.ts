@@ -5,7 +5,7 @@ import { StockWithDetails } from "../types";
 export const analyzeLowStock = async (lowStockItems: StockWithDetails[]) => {
   if (lowStockItems.length === 0) return "No low stock items detected. All inventory levels are optimal.";
 
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.API_KEY;  // Use environment variable for API key
   if (!apiKey) {
     const deficits = lowStockItems
       .map(i => ({

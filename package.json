@@ -1,7 +1,7 @@
 {
   "name": "inventory-tracking-system",
   "private": true,
-  "workspaces": ["frontend", "backend"],
+  "workspaces": ["frontend", "backend"], 
   "scripts": {
     "install:all": "npm install --workspaces",
     "dev:frontend": "npm --workspace frontend run dev",

@@ -27,7 +27,7 @@ const BaseModal: React.FC<ModalProps> = ({
   title,
   children,
 }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return null; //model not shown
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 overflow-hidden">
@@ -48,7 +48,7 @@ const BaseModal: React.FC<ModalProps> = ({
 
 export const LocationModal: React.FC<{
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => void;  //modal close
   onSubmit: (data: any) => void;
 }> = ({ isOpen, onClose, onSubmit }) => {
   const [name, setName] = useState("");
